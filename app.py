@@ -129,6 +129,7 @@ _TIMEOUT_EXEMPT_PREFIXES = (
     "/api/cookbook/setup",  # remote pacman/apt installs
     "/api/upload",          # large files
     "/api/image",           # diffusion proxies (inpaint/harmonize/upscale/etc.) — own 120s httpx timeout
+    "/api/deck",            # deck generate/export — LLM may take 60-120s for full deck
 )
 
 
@@ -720,6 +721,9 @@ app.include_router(setup_contacts_routes())
 
 from companion import setup_companion_routes
 app.include_router(setup_companion_routes())
+
+from routes.deck_builder_routes import setup_deck_builder_routes
+app.include_router(setup_deck_builder_routes())
 
 # ========= ROUTES (kept in app.py) =========
 

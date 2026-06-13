@@ -22,6 +22,7 @@ import memoryModule from './js/memory.js';
 import voiceRecorderModule from './js/voiceRecorder.js';
 import censorModule from './js/censor.js';
 import galleryModule from './js/gallery.js';
+import deckBuilderModule from './js/deck-builder.js';
 import tasksModule from './js/tasks.js';
 import calendarModule from './js/calendar.js';
 import notesModule from './js/notes.js';
@@ -873,6 +874,13 @@ function initializeEventListeners() {
         if (galleryModule.isGalleryOpen()) galleryModule.closeGallery();
         else galleryModule.openGallery();
       }
+    });
+  }
+
+  const toolDeckBuilderBtn = el('tool-deck-builder-btn');
+  if (toolDeckBuilderBtn) {
+    toolDeckBuilderBtn.addEventListener('click', () => {
+      if (deckBuilderModule) deckBuilderModule.open();
     });
   }
 
@@ -3488,7 +3496,8 @@ function startOdysseusApp() {
     'rail-research':  'tool-research-btn',
     'rail-cookbook':   'tool-cookbook-btn',
     'rail-archive':   'tool-library-btn',
-    'rail-gallery':   'tool-gallery-btn',
+    'rail-gallery':        'tool-gallery-btn',
+    'rail-deck-builder':   'tool-deck-builder-btn',
     'rail-tasks':     'tool-tasks-btn',
     'rail-calendar':  'tool-calendar-btn',
     'rail-notes':     'tool-notes-btn',
